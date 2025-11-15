@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈果 - 个人简历</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.25s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light: #121212;
+                --dark: #f8f9fa;
+                --gray: #adb5bd;
+                --light-gray: #2d2d2d;
+                --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .dark-mode {
+            --light: #121212;
+            --dark: #f8f9fa;
+            --gray: #adb5bd;
+            --light-gray: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            transition: var(--transition);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            background-color: rgba(18, 18, 18, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .dark-mode .nav-links a {
+            color: var(--light);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .theme-toggle, .print-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--dark);
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-mode .theme-toggle, .dark-mode .print-btn {
+            color: var(--light);
+        }
+
+        .theme-toggle:hover, .print-btn:hover {
+            background-color: var(--light-gray);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        .dark-mode .mobile-menu-btn {
+            color: var(--light);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* 主要内容区域 */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 亮点成果区 */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            background-color: var(--light);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .highlight-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 个人照片区域 */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .profile-image {
+            flex: 0 0 280px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        /* Tabs 组件 */
+        .tabs-container {
+            margin-top: 2rem;
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 经历卡片 */
+        .experience-card {
+            background-color: var(--light);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .experience-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            background: var(--light-gray);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .experience-company {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-description {
+            margin-top: 1rem;
+        }
+
+        .experience-description ul {
+            padding-left: 1.5rem;
+        }
+
+        .experience-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 项目卡片 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--light);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 180px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--light-gray);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* 技能矩阵 */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            color: var(--gray);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* 教育与证书 */
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background-color: var(--light);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .education-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .education-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .education-school {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificates {
+            margin-top: 2rem;
+        }
+
+        .certificate-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .certificate-item:hover {
+            transform: translateX(5px);
+        }
+
+        .certificate-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--light);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: var(--dark);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                flex: 0 0 auto;
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .experience-date {
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* 打印样式 */
+        @media print {
+            header, .back-to-top, .theme-toggle, .print-btn {
+                display: none !important;
+            }
+
+            .hero {
+                background: none !important;
+                color: black !important;
+                padding: 2rem 0 !important;
+            }
+
+            .hero::before {
+                display: none;
+            }
+
+            section {
+                padding: 1.5rem 0 !important;
+                page-break-inside: avoid;
+            }
+
+            .highlight-card, .experience-card, .project-card, .education-card, .certificate-item {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+
+            .tab-content {
+                display: block !important;
+            }
+
+            .tabs-header {
+                display: none;
+            }
+
+            a {
+                color: black !important;
+                text-decoration: underline;
+            }
+
+            .btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">陈果</div>
+                <div class="nav-links">
+                    <a href="#about">关于我</a>
+                    <a href="#experience">经历</a>
+                    <a href="#projects">项目</a>
+                    <a href="#skills">技能</a>
+                    <a href="#education">教育</a>
+                    <a href="#contact">联系</a>
+                </div>
+                <div class="nav-controls">
+                    <button class="theme-toggle" aria-label="切换主题">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="print-btn" aria-label="打印简历">🖨️</button>
+                    <button class="mobile-menu-btn">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>陈果</h1>
+                <p>AI技术爱好者 | 业务流程优化学习者 | 达摩院认证人工智能训练师</p>
+                <div class="hero-badges">
+                    <span class="badge">INFJ</span>
+                    <span class="badge">提示词工程</span>
+                    <span class="badge">AI工作流</span>
+                    <span class="badge">Python自动化</span>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="contact-btn">
+                        <span>📱</span> 联系我
+                    </button>
+                    <button class="btn btn-secondary" id="download-cv">
+                        <span>📄</span> 下载简历
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <p class="section-subtitle">对AI技术应用与业务流程优化有浓厚兴趣，正在探索如何通过技术创新提升效率</p>
+            
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="account1.jpg" alt="陈果的全身照">
+                </div>
+                <div class="profile-text">
+                    <p>我是陈果，合肥工业大学工商管理专业的学生，对AI技术有浓厚兴趣，并获得了达摩院人工智能训练师认证。我热衷于探索AI在日常工作和学习中的应用，希望通过技术提升效率。</p>
+                    <p>除了AI技术，我还对业务流程优化和自动化工具开发感兴趣，正在学习Python编程和各类AI平台的使用。</p>
+                </div>
+            </div>
+            
+            <div class="highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🚀</div>
+                    <h3>AI技术爱好者</h3>
+                    <p>对提示词工程与单Agent架构设计有兴趣，获得达摩院高级认证</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">⚙️</div>
+                    <h3>工具开发学习</h3>
+                    <p>学习使用百度云、coze构建AI工作流，探索Python自动化脚本开发</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">📊</div>
+                    <h3>商业赋能探索</h3>
+                    <p>尝试AI+PPT智能报告生成，学习业务流程效率优化方案设计</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 经历 -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">学习与实践经历</h2>
+            <p class="section-subtitle">在AI技术和业务流程优化领域的探索与实践</p>
+            
+            <div class="tabs-container">
+                <div class="tabs-header" role="tablist">
+                    <button class="tab-btn active" role="tab" aria-selected="true" data-tab="work">实践经历</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="internship">学习经历</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="campus">校园经历</button>
+                </div>
+                
+                <div class="tab-content active" id="work-tab" role="tabpanel">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3 class="experience-title">AI应用实践</h3>
+                            <span class="experience-date">2024年至今</span>
+                        </div>
+                        <div class="experience-company">个人项目</div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>探索AI在日常工作中的应用，尝试使用提示词工程提升工作效率</li>
+                                <li>学习使用百度云和coze平台构建简单的AI工作流</li>
+                                <li>尝试将AI技术应用于PPT生成，探索自动化报告的可能性</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="internship-tab" role="tabpanel">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3 class="experience-title">达摩院AI训练师认证学习</h3>
+                            <span class="experience-date">2025年</span>
+                        </div>
+                        <div class="experience-company">阿里达摩院</div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>系统学习AI基础知识与应用技巧</li>
+                                <li>完成初级和高级训练师认证课程</li>
+                                <li>掌握提示词工程的基本原理与实践方法</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="campus-tab" role="tabpanel">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3 class="experience-title">校园AI兴趣小组</h3>
+                            <span class="experience-date">2024年</span>
+                        </div>
+                        <div class="experience-company">合肥工业大学</div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>参与校园AI技术兴趣小组，与同学交流学习心得</li>
+                                <li>组织小型分享会，介绍AI在日常学习中的应用</li>
+                                <li>探索AI技术与工商管理专业的结合点</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目 -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">项目探索</h2>
+            <p class="section-subtitle">在AI应用与业务流程优化方面的学习与实践项目</p>
+            
+            <div class="tabs-container">
+                <div class="tabs-header" role="tablist">
+                    <button class="tab-btn active" role="tab" aria-selected="true" data-tab="ai">AI探索项目</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="automation">自动化尝试</button>
+                </div>
+                
+                <div class="projects-grid tab-content active" id="ai-tab" role="tabpanel">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="photo2.jpg" alt="达摩院AI证书">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">达摩院AI训练师认证</h3>
+                            <p class="project-description">系统学习AI技术并获得达摩院初级和高级训练师认证，掌握提示词工程基础。</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">提示词工程</span>
+                                <span class="tech-tag">AI基础</span>
+                                <span class="tech-tag">应用实践</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="photo4.jpg" alt="Coze平台AI工作流搭建">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Coze平台AI工作流搭建</h3>
+                            <p class="project-description">学习使用Coze平台搭建简单的AI工作流，实现基础的信息处理和自动化任务。</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Coze平台</span>
+                                <span class="tech-tag">工作流设计</span>
+                                <span class="tech-tag">自动化</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projects-grid tab-content" id="automation-tab" role="tabpanel">
+                    <div class="project-card">
+                        <div class="project-image" style="background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                            <div style="color: #666; text-align: center;">
+                                <div style="font-size: 2rem;">🐍</div>
+                                <div>Python自动化脚本</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Python自动化脚本学习</h3>
+                            <p class="project-description">学习编写Python脚本实现日常工作的简单自动化，提升工作效率。</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">自动化</span>
+                                <span class="tech-tag">脚本编写</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">学习与技能</h2>
+            <p class="section-subtitle">在AI技术、工具开发与商业赋能领域的学习与掌握情况</p>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>AI技术</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">提示词工程</span>
+                            <span class="skill-level">掌握</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">单Agent架构理解</span>
+                            <span class="skill-level">了解</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">AI工作流构建</span>
+                            <span class="skill-level">学习</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>工具开发</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">百度云应用</span>
+                            <span class="skill-level">学习</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Coze平台</span>
+                            <span class="skill-level">掌握</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Python自动化</span>
+                            <span class="skill-level">学习</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>商业赋能</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">AI+PPT报告生成</span>
+                            <span class="skill-level">探索</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">业务流程优化</span>
+                            <span class="skill-level">学习</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">效率方案设计</span>
+                            <span class="skill-level">了解</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育与证书 -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">教育与证书</h2>
+            <p class="section-subtitle">学术背景与学习认证</p>
+            
+            <div class="education-cards">
+                <div class="education-card">
+                    <div class="education-header">
+                        <h3 class="education-title">工商管理学士</h3>
+                        <span class="education-date">本科</span>
+                    </div>
+                    <div class="education-school">合肥工业大学</div>
+                    <p>核心课程：管理信息系统、数据分析、统计学、运营管理</p>
+                </div>
+            </div>
+            
+            <div class="certificates">
+                <h3 style="margin-bottom: 1.5rem;">学习认证</h3>
+                
+                <div class="certificate-item">
+                    <div class="certificate-image">
+                        <img src="photo2.jpg" alt="达摩院AI证书">
+                    </div>
+                    <div>
+                        <h4>达摩院人工智能高级训练师</h4>
+                        <p>2025年</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-image">
+                        <img src="photo3.jpg" alt="达摩院AI证书">
+                    </div>
+                    <div>
+                        <h4>达摩院人工智能初级训练师</h4>
+                        <p>2025年</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系 -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <p class="section-subtitle">期待与您交流AI技术学习与商业创新的可能性</p>
+            
+            <div class="highlights" style="justify-content: center;">
+                <div class="highlight-card" style="text-align: center;">
+                    <div class="highlight-icon">📱</div>
+                    <h3>电话</h3>
+                    <p>18776725860</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;" onclick="copyToClipboard('18776725860')">复制号码</button>
+                </div>
+                <div class="highlight-card" style="text-align: center;">
+                    <div class="highlight-icon">✉️</div>
+                    <h3>邮箱</h3>
+                    <p id="email-text">点击查看邮箱</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;" id="email-btn">查看邮箱</button>
+                </div>
+                <div class="highlight-card" style="text-align: center;">
+                    <div class="highlight-icon">📱</div>
+                    <h3>抖音</h3>
+                    <p>扫码添加好友</p>
+                    <div style="margin-top: 1rem; background: #f0f0f0; padding: 10px; border-radius: 8px; display: inline-block;">
+                        <img src="photo1.png" alt="抖音好友码" style="width: 120px; height: 120px; display: block;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>陈果</h3>
+                <p>AI技术爱好者 | 业务流程优化学习者</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">关于我</a>
+                <a href="#experience">经历</a>
+                <a href="#projects">项目</a>
+                <a href="#skills">技能</a>
+                <a href="#education">教育</a>
+                <a href="#contact">联系</a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="current-year">2025</span> 陈果. 保留所有权利. 最后更新: <span id="last-updated">2025年5月</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" aria-label="返回顶部">↑</button>
+
+    <script>
+        // 简历数据
+        const resume = {
+            personal: {
+                name: "陈果",
+                personality: "INFJ",
+                phone: "18776725860",
+                email: "2275452883@qq.com",
+                github: "GitHub/作品集链接待补",
+                summary: "AI技术爱好者 | 业务流程优化学习者 | 达摩院认证人工智能训练师"
+            },
+            education: {
+                school: "合肥工业大学",
+                degree: "工商管理学士",
+                type: "本科",
+                gpa: "待补",
+                ranking: "待补",
+                courses: ["管理信息系统", "数据分析", "统计学", "运营管理"]
+            },
+            skills: {
+                ai: [
+                    { name: "提示词工程", level: 75 },
+                    { name: "单Agent架构理解", level: 60 },
+                    { name: "AI工作流构建", level: 65 }
+                ],
+                tools: [
+                    { name: "百度云应用", level: 65 },
+                    { name: "Coze平台", level: 70 },
+                    { name: "Python自动化", level: 60 }
+                ],
+                business: [
+                    { name: "AI+PPT报告生成", level: 70 },
+                    { name: "业务流程优化", level: 65 },
+                    { name: "效率方案设计", level: 60 }
+                ]
+            },
+            certificates: [
+                { name: "达摩院人工智能高级训练师", year: "2025" },
+                { name: "达摩院人工智能初级训练师", year: "2025" }
+            ],
+            workExperience: [
+                {
+                    title: "AI应用实践",
+                    company: "个人项目",
+                    date: "2024年至今",
+                    description: [
+                        "探索AI在日常工作中的应用，尝试使用提示词工程提升工作效率",
+                        "学习使用百度云和coze平台构建简单的AI工作流",
+                        "尝试将AI技术应用于PPT生成，探索自动化报告的可能性"
+                    ]
+                }
+            ],
+            projects: [
+                {
+                    title: "达摩院AI训练师认证",
+                    description: "系统学习AI技术并获得达摩院初级和高级训练师认证，掌握提示词工程基础。",
+                    tech: ["提示词工程", "AI基础", "应用实践"],
+                    category: "ai"
+                },
+                {
+                    title: "Coze平台AI工作流搭建",
+                    description: "学习使用Coze平台搭建简单的AI工作流，实现基础的信息处理和自动化任务。",
+                    tech: ["Coze平台", "工作流设计", "自动化"],
+                    category: "ai"
+                },
+                {
+                    title: "Python自动化脚本学习",
+                    description: "学习编写Python脚本实现日常工作的简单自动化，提升工作效率。",
+                    tech: ["Python", "自动化", "脚本编写"],
+                    category: "automation"
+                }
+            ]
+        };
+
+        // 初始化函数
+        function init() {
+            // 设置当前年份和最后更新时间
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // 初始化标签页
+            initTabs();
+            
+            // 初始化主题切换
+            initThemeToggle();
+            
+            // 初始化导航
+            initNavigation();
+            
+            // 初始化返回顶部按钮
+            initBackToTop();
+            
+            // 初始化打印功能
+            initPrint();
+            
+            // 初始化邮箱防爬
+            initEmailProtection();
+        }
+
+        // 初始化标签页
+        function initTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 移除所有标签页的active类
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // 添加active类到当前标签页
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+                
+                // 添加键盘支持
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                        const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+                        const currentIndex = tabs.indexOf(btn);
+                        let nextIndex;
+                        
+                        if (e.key === 'ArrowLeft') {
+                            nextIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                        } else {
+                            nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                        }
+                        
+                        tabs[nextIndex].focus();
+                        tabs[nextIndex].click();
+                    }
+                });
+            });
+        }
+
+        // 初始化主题切换
+        function initThemeToggle() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeIcon = document.querySelector('.theme-icon');
+            
+            // 检查本地存储或系统偏好
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.textContent = '☀️';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.textContent = '🌙';
+                }
+            });
+        }
+
+        // 初始化导航
+        function initNavigation() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // 点击导航链接后关闭移动菜单
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // 初始化返回顶部按钮
+        function initBackToTop() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // 初始化打印功能
+        function initPrint() {
+            const printBtn = document.querySelector('.print-btn');
+            
+            printBtn.addEventListener('click', () => {
+                window.print();
+            });
+        }
+
+        // 初始化邮箱防爬
+        function initEmailProtection() {
+            const emailBtn = document.getElementById('email-btn');
+            const emailText = document.getElementById('email-text');
+            
+            emailBtn.addEventListener('click', () => {
+                const email = resume.personal.email;
+                emailText.textContent = email;
+                emailBtn.textContent = '复制邮箱';
+                
+                // 更改按钮功能为复制
+                emailBtn.onclick = () => copyToClipboard(email);
+            });
+        }
+
+        // 复制到剪贴板函数
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制到剪贴板: ' + text);
+            }).catch(err => {
+                console.error('复制失败: ', err);
+            });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
